@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>IRONBRUSH Painting Company</title>
+<style>
+  /* Reset & base */
+  * {
+    box-sizing: border-box;
+    margin: 0; padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  body {
+    background: #f5f5f5;
+    color: #333;
+    scroll-behavior: smooth;
+  }
+  header {
+    position: fixed;
+    width: 100%;
+    background: #222;
+    color: white;
+    top: 0; left: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+  }
+  nav {
+    max-width: 1100px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+  }
+  nav .logo {
+    font-weight: 700;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+    user-select: none;
+    color: #ddd;
+  }
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+  }
+  nav ul li a {
+    color: #ddd;
+    text-decoration: none;
+    font-weight: 600;
+    position: relative;
+    padding: 0.3rem 0;
+    transition: color 0.3s ease;
+  }
+  nav ul li a:hover,
+  nav ul li a.active {
+    color: #bbb;
+  }
+  nav ul li a::after {
+    content: '';
+    display: block;
+    height: 2px;
+    background: #bbb;
+    width: 0;
+    transition: width 0.3s ease;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+  nav ul li a:hover::after,
+  nav ul li a.active::after {
+    width: 100%;
+  }
+
+  main {
+    padding-top: 70px;
+    max-width: 1100px;
+    margin: auto;
+  }
+  section {
+    min-height: 100vh;
+    padding: 4rem 2rem;
+    background: white;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  section.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  h1, h2 {
+    color: #444;
+    margin-bottom: 1rem;
+  }
+  p {
+    line-height: 1.6;
+    color: #555;
+  }
+  /* Buttons */
+  .btn {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    background: #777;
+    color: white;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.3s ease;
+  }
+  .btn:hover {
+    background: #444;
+  }
+  /* Contact form */
+  form {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+  }
+  form label {
+    margin-top: 1rem;
+    font-weight: 600;
+    color: #333;
+  }
+  form input, form textarea {
+    padding: 0.5rem;
+    margin-top: 0.3rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: inherit;
+  }
+  form textarea {
+    resize: vertical;
+  }
+  form button {
+    margin-top: 1.5rem;
+    padding: 0.6rem 1.2rem;
+    background: #555;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  form button:hover {
+    background: #333;
+  }
+  /* Responsive */
+  @media (max-width: 600px) {
+    nav ul {
+      gap: 1rem;
+      font-size: 0.9rem;
+    }
+    section {
+      padding: 2rem 1rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo">IRONBRUSH</div>
+    <ul>
+      <li><a href="#home" class="active">Home</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section id="home" class="visible">
+    <h1>Welcome to IRONBRUSH Painting Company</h1>
+    <p>Professional painting services for your home and business. Quality, reliability, and a flawless finish every time.</p>
+    <a href="#contact" class="btn">Get a Free Quote</a>
+  </section>
+
+  <section id="services">
+    <h2>Our Services</h2>
+    <ul>
+      <li>Interior Painting - Walls, ceilings, trim</li>
+      <li>Exterior Painting - Houses, commercial buildings</li>
+      <li>Wallpaper removal and preparation</li>
+      <li>Custom finishes and decorative painting</li>
+    </ul>
+  </section>
+
+  <section id="about">
+    <h2>About Us</h2>
+    <p>IRONBRUSH has over 10 years of experience delivering expert painting solutions. We pride ourselves on attention to detail, customer satisfaction, and timely project completion.</p>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <form id="contactForm">
+      <label for="name">Name</label>
+      <input type="text" id="name" required placeholder="Your Name" />
+      <label for="email">Email</label>
+      <input type="email" id="email" required placeholder="Your Email" />
+      <label for="message">Message</label>
+      <textarea id="message" rows="5" required placeholder="Your Message"></textarea>
+      <button type="submit">Send</button>
+    </form>
+    <p id="formStatus" style="margin-top:1rem;color:green;"></p>
+  </section>
+</main>
+
+<script>
+  // Animate sections when scrolled into view
+  const sections = document.querySelectorAll('section');
+
+  function checkVisibility() {
+    const triggerBottom = window.innerHeight * 0.85;
+    sections.forEach(section => {
+      const top = section.getBoundingClientRect().top;
+      if(top < triggerBottom) {
+        section.classList.add('visible');
+      }
+    });
+  }
+  window.addEventListener('scroll', checkVisibility);
+  window.addEventListener('load', checkVisibility);
+
+  // Highlight nav links on scroll
+  const navLinks = document.querySelectorAll('nav ul li a');
+  const sectionIds = [...sections].map(s => s.id);
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+      const top = section.getBoundingClientRect().top;
+      if(top <= 100) {
+        current = section.id;
+      }
+    });
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if(link.getAttribute('href') === '#' + current) {
+        link.classList.add('active');
+      }
+    });
+  });
+
+  // Simple form submit simulation
+  const form = document.getElementById('contactForm');
+  const formStatus = document.getElementById('formStatus');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    formStatus.textContent = 'Thank you for your message! We will get back to you soon.';
+    form.reset();
+  });
+</script>
+
+</body>
+</html>
